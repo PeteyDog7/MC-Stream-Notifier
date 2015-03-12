@@ -23,6 +23,10 @@
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="cpw.mods.fml.common.Mod.EventHandler" />
+      <item index="1" class="java.lang.String" itemvalue="cpw.mods.fml.common.Mod.Instance" />
+    </list>
   </component>
   <component name="GradleUISettings">
     <setting name="root" />

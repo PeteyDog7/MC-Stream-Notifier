@@ -1,0 +1,13 @@
+[{
+    "modid": "MCStreamNotifier",
+    "name": "MC Stream Notifier",
+    "description": "A simple mod for Twitch Streamers that provides in-game notifications for new followers/subscribers.",
+    "version": "1.7.10-1.0",
+    "mcversion": "1.7.10",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [ "PeteyDog7" ],
+    "credits": "Special thanks to Pahimar for his tutorials.",
+    "logoFile": "",
+    "screenshots": []
+}]
