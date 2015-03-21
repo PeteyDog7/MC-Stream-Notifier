@@ -7,9 +7,7 @@ import cpw.mods.fml.client.config.*;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.common.config.Property;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ModGuiConfig extends GuiConfig{
@@ -18,7 +16,7 @@ public class ModGuiConfig extends GuiConfig{
 
         super(
                 guiScreen,
-                orderElements(new ConfigElement(ConfigurationHandler.configuration.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements()),
+                getElements(),
                 Reference.MOD_ID,
                 false,
                 false,
@@ -28,23 +26,9 @@ public class ModGuiConfig extends GuiConfig{
 
     }
 
-    private static List<IConfigElement> orderElements(List<IConfigElement> elements){
+    private static List<IConfigElement> getElements(){
 
-        List<String> ordered = new ArrayList<String>();
-        Property property;
-
-        property = ConfigurationHandler.configuration.get(Configuration.CATEGORY_GENERAL, Config.KEY_TWITCH_CHANNEL, "channel");
-        ordered.add(property.getString());
-
-        property = ConfigurationHandler.configuration.get(Configuration.CATEGORY_GENERAL, Config.KEY_SUBSCRIBE_NOTIFICATION, true);
-        ordered.add(property.getString());
-
-        property = ConfigurationHandler.configuration.get(Configuration.CATEGORY_GENERAL, Config.KEY_FOLLOW_NOTIFICATION, true);
-        ordered.add(property.getString());
-
-        ConfigurationHandler.configuration.setCategoryPropertyOrder(Configuration.CATEGORY_GENERAL, ordered);
-
-        return elements;
+        return new ConfigElement(ConfigurationHandler.configuration.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements();
 
     }
 

@@ -5,20 +5,17 @@ import com.peteydog7.mcstreamnotifier.reference.Reference;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import static net.minecraftforge.common.config.Configuration.CATEGORY_GENERAL;
 
 public class ConfigurationHandler {
 
     public static Configuration configuration;
-
-    protected static String primaryColor;
-    protected static String secondaryColor;
-    protected static boolean followNotification;
-    protected static boolean subscribeNotification;
-    protected static String twitchChannel;
 
     public static void init(File configFile){
 
@@ -29,13 +26,48 @@ public class ConfigurationHandler {
 
     }
 
+    protected static String primaryColor;
+    protected static String secondaryColor;
+    protected static boolean followNotification;
+    protected static boolean subscribeNotification;
+    protected static String twitchChannel;
+
     private static void loadConfig(){
 
-        twitchChannel = configuration.getString(Config.KEY_TWITCH_CHANNEL, CATEGORY_GENERAL, "channel", Config.COMMENT_TWITCH_CHANNEL, Config.LANGKEY_TWITCH_CHANNEL);
-        subscribeNotification = configuration.getBoolean(Config.KEY_SUBSCRIBE_NOTIFICATION, CATEGORY_GENERAL, true, Config.COMMENT_SUBSCRIBE_NOTIFICATION, Config.LANGKEY_SUBSCRIBE_NOTIFICATION);
-        followNotification = configuration.getBoolean(Config.KEY_FOLLOW_NOTIFICATION, CATEGORY_GENERAL, true, Config.COMMENT_FOLLOW_NOTIFICATION, Config.LANGKEY_FOLLOW_NOTIFICATION);
-        primaryColor = configuration.getString(Config.KEY_PRIMARY_COLOR, CATEGORY_GENERAL, "c", Config.COMMENT_PRIMARY_COLOR, Config.LANGKEY_PRIMARY_COLOR);
-        secondaryColor = configuration.getString(Config.KEY_SECONDARY_COLOR, CATEGORY_GENERAL, "c", Config.COMMENT_SECONDARY_COLOR, Config.LANGKEY_SECONDARY_COLOR);
+        List<String> propOrder = new ArrayList<String>();
+        Property prop;
+
+        prop = configuration.get(CATEGORY_GENERAL, Config.KEY_TWITCH_CHANNEL, "channel");
+        prop.comment = Config.COMMENT_TWITCH_CHANNEL;
+        prop.setLanguageKey(Config.LANGKEY_TWITCH_CHANNEL);
+        twitchChannel = prop.getString();
+        propOrder.add(prop.getName());
+
+        prop = configuration.get(CATEGORY_GENERAL, Config.KEY_SUBSCRIBE_NOTIFICATION, true);
+        prop.comment = Config.COMMENT_SUBSCRIBE_NOTIFICATION;
+        prop.setLanguageKey(Config.LANGKEY_SUBSCRIBE_NOTIFICATION);
+        subscribeNotification = prop.getBoolean(true);
+        propOrder.add(prop.getName());
+
+        prop = configuration.get(CATEGORY_GENERAL, Config.KEY_FOLLOW_NOTIFICATION, true);
+        prop.comment = Config.COMMENT_FOLLOW_NOTIFICATION;
+        prop.setLanguageKey(Config.LANGKEY_FOLLOW_NOTIFICATION);
+        followNotification = prop.getBoolean(true);
+        propOrder.add(prop.getName());
+
+        prop = configuration.get(CATEGORY_GENERAL, Config.KEY_PRIMARY_COLOR, "c");
+        prop.comment = Config.COMMENT_PRIMARY_COLOR;
+        prop.setLanguageKey(Config.LANGKEY_PRIMARY_COLOR);
+        primaryColor = prop.getString();
+        propOrder.add(prop.getName());
+
+        prop = configuration.get(CATEGORY_GENERAL, Config.KEY_SECONDARY_COLOR, "c");
+        prop.comment = Config.COMMENT_SECONDARY_COLOR;
+        prop.setLanguageKey(Config.LANGKEY_SECONDARY_COLOR);
+        secondaryColor = prop.getString();
+        propOrder.add(prop.getName());
+
+        configuration.setCategoryPropertyOrder(CATEGORY_GENERAL, propOrder);
 
         if(configuration.hasChanged()){
 
