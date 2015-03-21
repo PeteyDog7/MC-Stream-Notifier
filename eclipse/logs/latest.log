@@ -1,13 +1,12 @@
-[16:36:50] [main/INFO]: Setting user: Player687
-[16:36:51] [Client thread/INFO]: LWJGL Version: 2.9.1
-[16:36:55] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:MC Stream Notifier
-[16:36:55] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: %s in %s
-[16:36:56] [Sound Library Loader/INFO]: Sound engine started
-[16:36:57] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[16:36:57] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[16:36:57] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:MC Stream Notifier
-[16:36:57] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: %s in %s
-[16:36:57] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[16:36:57] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[16:36:58] [Sound Library Loader/INFO]: Sound engine started
-[16:37:26] [Client thread/INFO]: Stopping!
+[19:05:37] [main/INFO]: Setting user: Player15
+[19:05:38] [Client thread/INFO]: LWJGL Version: 2.9.1
+[19:05:43] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:MC Stream Notifier
+[19:05:43] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: %s in %s
+[19:05:44] [Sound Library Loader/INFO]: Sound engine started
+[19:05:45] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[19:05:45] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[19:05:46] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:MC Stream Notifier
+[19:05:46] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: %s in %s
+[19:05:46] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[19:05:46] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[19:05:47] [Sound Library Loader/INFO]: Sound engine started
