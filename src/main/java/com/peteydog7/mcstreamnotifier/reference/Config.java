@@ -1,3 +1,11 @@
+/*
+ * MC Stream Notifier  Copyright (C) 2015  PeteyDog7
+ * This program comes with ABSOLUTELY NO WARRANTY. This is free software,
+ * and you are welcome to redistribute it under certain conditions.
+ * View the included license or visit http://www.gnu.org/licenses/gpl-3.0.txt
+ * for more information.
+ */
+
 package com.peteydog7.mcstreamnotifier.reference;
 
 import cpw.mods.fml.client.config.GuiConfigEntries;
@@ -13,8 +21,8 @@ public class Config {
 
     /////////////////////////////////////////////////////////////////////////
 
-    //public static final String CATEGORY_NOTIFICATIONS = "Notifications";
-    //public static final String CATEGORY_NOTIFICATIONS_LANGKEY = I18n.format("mcstreamnotifier.configgui.ctgy.notification");
+    public static final String CATEGORY_NOTIFICATIONS = "notifications";
+    public static final String CATEGORY_NOTIFICATIONS_LANGKEY = "mcstreamnotifier.configgui.ctgy.notification";
 
     //------
 
@@ -36,8 +44,8 @@ public class Config {
 
     ///////////////////////////////////////////////////////////
 
-    //public static final String CATEGORY_TWITCH = "Twitch";
-    //public static final String CATEGORY_TWITCH_LANGKEY = I18n.format("mcstreamnotifier.configgui.ctgy.twitch");
+    public static final String CATEGORY_TWITCH = "twitch";
+    public static final String CATEGORY_TWITCH_LANGKEY = "mcstreamnotifier.configgui.ctgy.twitch";
 
     //------
 

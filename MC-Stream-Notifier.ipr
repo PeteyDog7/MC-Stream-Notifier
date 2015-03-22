@@ -16,7 +16,18 @@
       </profile>
     </annotationProcessing>
   </component>
-  <component name="CopyrightManager" default="" />
+  <component name="CopyrightManager" default="">
+    <copyright>
+      <option name="notice" value="MC Stream Notifier  Copyright (C) 2015  PeteyDog7&#10;This program comes with ABSOLUTELY NO WARRANTY. This is free software,&#10;and you are welcome to redistribute it under certain conditions.&#10;View the included license or visit http://www.gnu.org/licenses/gpl-3.0.txt&#10;for more information." />
+      <option name="keyword" value="Copyright" />
+      <option name="allowReplaceKeyword" value="" />
+      <option name="myName" value="Copyright" />
+      <option name="myLocal" value="true" />
+    </copyright>
+    <module2copyright>
+      <element module="Production" copyright="Copyright" />
+    </module2copyright>
+  </component>
   <component name="DependencyValidationManager">
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
@@ -172,6 +183,15 @@
         <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
       </item>
     </group>
+  </component>
+  <component name="ProjectDictionaryState">
+    <dictionary name="Noah">
+      <words>
+        <w>langkey</w>
+        <w>minecraft</w>
+        <w>peteydog</w>
+      </words>
+    </dictionary>
   </component>
   <component name="ProjectModuleManager">
     <modules>

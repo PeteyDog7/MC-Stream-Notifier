@@ -1,3 +1,11 @@
+/*
+ * MC Stream Notifier  Copyright (C) 2015  PeteyDog7
+ * This program comes with ABSOLUTELY NO WARRANTY. This is free software,
+ * and you are welcome to redistribute it under certain conditions.
+ * View the included license or visit http://www.gnu.org/licenses/gpl-3.0.txt
+ * for more information.
+ */
+
 package com.peteydog7.mcstreamnotifier.gui;
 
 import com.peteydog7.mcstreamnotifier.config.ConfigurationHandler;
@@ -8,6 +16,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModGuiConfig extends GuiConfig{
@@ -16,7 +25,7 @@ public class ModGuiConfig extends GuiConfig{
 
         super(
                 guiScreen,
-                getElements(),
+                getConfigElements(),
                 Reference.MOD_ID,
                 false,
                 false,
@@ -30,6 +39,20 @@ public class ModGuiConfig extends GuiConfig{
 
         return new ConfigElement(ConfigurationHandler.configuration.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements();
 
+    }
+
+    private static List<IConfigElement> getConfigElements() {
+        List<IConfigElement> list = new ArrayList<IConfigElement>();
+
+        list.add(categoryElement(Config.CATEGORY_NOTIFICATIONS, "Notifications", Config.CATEGORY_NOTIFICATIONS_LANGKEY));
+        list.add(categoryElement(Config.CATEGORY_TWITCH, "Twitch", Config.CATEGORY_TWITCH_LANGKEY));
+
+        return list;
+    }
+
+    private static IConfigElement categoryElement(String category, String name, String tooltip_key) {
+        return new DummyConfigElement.DummyCategoryElement(name, tooltip_key,
+                new ConfigElement(ConfigurationHandler.configuration.getCategory(category)).getChildElements());
     }
 
     /*

@@ -6,9 +6,9 @@
  * for more information.
  */
 
-package com.peteydog7.mcstreamnotifier.proxy;
+package com.peteydog7.mcstreamnotifier.config;
 
-public class ClientProxy extends CommonProxy {
+public class CustomGuiConfigEntries {
 
 
 

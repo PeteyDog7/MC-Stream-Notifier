@@ -4,13 +4,11 @@ import org.json.JSONObject;
 
 public class JSONHelper {
 
-    public static String getString(){
-
-        String string = "";
+    public static JSONObject getJSONObject(String string){
 
         JSONObject jsonObject = new JSONObject(string);
 
-        return string;
+        return jsonObject;
 
     }
 

@@ -1,22 +1,26 @@
+/*
+ * MC Stream Notifier  Copyright (C) 2015  PeteyDog7
+ * This program comes with ABSOLUTELY NO WARRANTY. This is free software,
+ * and you are welcome to redistribute it under certain conditions.
+ * View the included license or visit 'http://www.gnu.org/licenses/gpl-3.0.txt'
+ * for more information.
+ */
+
 package com.peteydog7.mcstreamnotifier;
 
 import com.peteydog7.mcstreamnotifier.config.ConfigurationHandler;
 import com.peteydog7.mcstreamnotifier.proxy.IProxy;
 import com.peteydog7.mcstreamnotifier.reference.Reference;
-import com.peteydog7.mcstreamnotifier.twtich.Http;
+import com.peteydog7.mcstreamnotifier.twtich.CallLoop;
+import com.peteydog7.mcstreamnotifier.twtich.TwitchAPI;
 import com.peteydog7.mcstreamnotifier.util.LogHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLModDisabledEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION, guiFactory = Reference.GUI_FACTORY_CLASS)
 public class MCStreamNotifier {
@@ -44,22 +48,24 @@ public class MCStreamNotifier {
 
     }
 
+    public static boolean initialized;
+
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
 
-        List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
-        urlParameters.add(new BasicNameValuePair("direction", "DESC"));
-        urlParameters.add(new BasicNameValuePair("limit", "10"));
-        urlParameters.add(new BasicNameValuePair("offset", "0"));
-        
-        try {
-            LogHelper.info(Http.sendGet("channels/giantwaffle/follows", urlParameters));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        initialized = true;
 
+        CallLoop callLoop = new CallLoop();
+        new Thread(callLoop).start();
 
         LogHelper.info("Post Initialization Event Complete!");
+
+    }
+
+    @Mod.EventHandler
+    public void disable(FMLModDisabledEvent event) {
+
+        initialized = false;
 
     }
 
