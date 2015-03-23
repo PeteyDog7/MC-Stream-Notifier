@@ -30,6 +30,7 @@ public class ConfigurationHandler {
         if(configuration == null) {
             configuration = new Configuration(configFile);
             loadConfig();
+            updateConfigReference();
         }
 
     }

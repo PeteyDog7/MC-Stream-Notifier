@@ -11,8 +11,7 @@ package com.peteydog7.mcstreamnotifier;
 import com.peteydog7.mcstreamnotifier.config.ConfigurationHandler;
 import com.peteydog7.mcstreamnotifier.proxy.IProxy;
 import com.peteydog7.mcstreamnotifier.reference.Reference;
-import com.peteydog7.mcstreamnotifier.twtich.CallLoop;
-import com.peteydog7.mcstreamnotifier.twtich.TwitchAPI;
+import com.peteydog7.mcstreamnotifier.twtich.TwitchApiTask;
 import com.peteydog7.mcstreamnotifier.util.LogHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -21,6 +20,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLModDisabledEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+
+import java.util.Timer;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION, guiFactory = Reference.GUI_FACTORY_CLASS)
 public class MCStreamNotifier {
@@ -55,8 +56,8 @@ public class MCStreamNotifier {
 
         initialized = true;
 
-        CallLoop callLoop = new CallLoop();
-        new Thread(callLoop).start();
+        Timer twitchApiTimer = new Timer("twitchApi");
+        twitchApiTimer.scheduleAtFixedRate(new TwitchApiTask(), 0, 10000);
 
         LogHelper.info("Post Initialization Event Complete!");
 

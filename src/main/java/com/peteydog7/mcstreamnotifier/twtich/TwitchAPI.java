@@ -35,11 +35,11 @@ public class TwitchAPI {
         }
 
         JSONObject jsonObject = new JSONObject(result);
-        String lastest = jsonObject.getJSONArray("follows").getJSONObject(1).getJSONObject("user").getString("name");
+        String latest = jsonObject.getJSONArray("follows").getJSONObject(1).getJSONObject("user").getString("name");
 
-        LogHelper.info("Latest Follower: "+lastest);
+        LogHelper.info("Latest Follower: "+latest);
 
-        return lastest;
+        return latest;
 
     }
 

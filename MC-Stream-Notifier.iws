@@ -63,13 +63,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="ConfigurationHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/config/ConfigurationHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1505" max-vertical-offset="1904">
+              <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#4120#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MCStreamNotifier.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/MCStreamNotifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1122">
-              <caret line="58" column="37" selection-start-line="58" selection-start-column="37" selection-end-line="58" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1122">
+              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding>
-                <element signature="e#0#2295#0" expanded="true" />
+                <element signature="e#0#2317#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -98,13 +111,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CallLoop.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/twtich/CallLoop.java">
+      <file leaf-file-name="TwitchApiTask.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/twtich/TwitchApiTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8095238" vertical-offset="0" max-vertical-offset="697">
-              <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.41262135" vertical-offset="0" max-vertical-offset="578">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
-                <element signature="e#0#934#0" expanded="true" />
+                <element signature="e#0#699#0" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
@@ -114,10 +127,10 @@
       <file leaf-file-name="TwitchAPI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/twtich/TwitchAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="918">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+              <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
               <folding>
-                <element signature="e#0#1543#0" expanded="true" />
+                <element signature="e#0#1540#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,7 +152,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/twtich/API.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/reference/Twitch.java" />
         <option value="$PROJECT_DIR$/LICENSE" />
-        <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/config/ConfigurationHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/reference/Config.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/config/CustomGuiConfigEntries.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/gui/ModGuiConfig.java" />
@@ -151,9 +163,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/reference/Reference.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/util/JSONHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/twtich/Http.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/twtich/TwitchAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/twtich/CallLoop.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/twtich/ApiCallLoop.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/config/ConfigurationHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/MCStreamNotifier.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/twtich/TwitchAPI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/twtich/TwitchApiTask.java" />
       </list>
     </option>
   </component>
@@ -842,7 +857,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -856,7 +871,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39895698" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22849463" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40860215" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23495702" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -902,14 +917,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/lang/Error.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33279222" vertical-offset="220" max-vertical-offset="1751">
-          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/17.0/7ca0efbeb87ca845b5d7a0ac9c21a4b7b95f7b28/guava-17.0-sources.jar!/com/google/common/base/Throwables.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25" vertical-offset="611" max-vertical-offset="3434">
@@ -1139,17 +1146,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/config/ConfigurationHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1887">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#4083#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/reference/Config.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32380953" vertical-offset="0" max-vertical-offset="1241">
@@ -1329,12 +1325,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/config/ConfigurationHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1505" max-vertical-offset="1904">
+          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#4120#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/util/Timer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8276699" vertical-offset="6374" max-vertical-offset="11628">
+          <caret line="427" column="16" selection-start-line="427" selection-start-column="16" selection-end-line="427" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/MCStreamNotifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1122">
-          <caret line="58" column="37" selection-start-line="58" selection-start-column="37" selection-end-line="58" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1122">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding>
-            <element signature="e#0#2295#0" expanded="true" />
+            <element signature="e#0#2317#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1342,19 +1357,19 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/twtich/TwitchAPI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
           <folding>
-            <element signature="e#0#1543#0" expanded="true" />
+            <element signature="e#0#1540#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/twtich/CallLoop.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/peteydog7/mcstreamnotifier/twtich/TwitchApiTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8095238" vertical-offset="0" max-vertical-offset="697">
-          <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.41262135" vertical-offset="0" max-vertical-offset="578">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <element signature="e#0#934#0" expanded="true" />
+            <element signature="e#0#699#0" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>

@@ -8,28 +8,21 @@
 
 package com.peteydog7.mcstreamnotifier.twtich;
 
-import com.peteydog7.mcstreamnotifier.MCStreamNotifier;
 import com.peteydog7.mcstreamnotifier.reference.Config;
 
-public class CallLoop implements Runnable {
+import java.util.TimerTask;
+
+public class TwitchApiTask extends TimerTask {
 
     @Override
     public void run() {
 
-        while (MCStreamNotifier.initialized) {
-
             if (Config.Value.FOLLOW_NOTIFICATION) {
+
                 TwitchAPI.getLatestFollower();
                 TwitchAPI.getRecentFollowers();
-            }
 
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
-
-        }
 
     }
 }
