@@ -22,9 +22,14 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 import java.util.Timer;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION, guiFactory = Reference.GUI_FACTORY_CLASS)
 public class MCStreamNotifier {
+
+    public static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(5);
 
     @Mod.Instance(Reference.MOD_ID)
     public static MCStreamNotifier instance;
@@ -56,8 +61,7 @@ public class MCStreamNotifier {
 
         initialized = true;
 
-        Timer twitchApiTimer = new Timer("twitchApi");
-        twitchApiTimer.scheduleAtFixedRate(new TwitchApiTask(), 0, 10000);
+        scheduler.scheduleAtFixedRate(new TwitchApiTask(), 0, 5, TimeUnit.MINUTES);
 
         LogHelper.info("Post Initialization Event Complete!");
 

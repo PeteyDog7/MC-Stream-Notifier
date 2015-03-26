@@ -9,18 +9,24 @@
 package com.peteydog7.mcstreamnotifier.twtich;
 
 import com.peteydog7.mcstreamnotifier.reference.Config;
+import com.peteydog7.mcstreamnotifier.util.LogHelper;
 
+import java.util.List;
 import java.util.TimerTask;
+import java.util.concurrent.Callable;
 
-public class TwitchApiTask extends TimerTask {
+public class TwitchApiTask implements Runnable {
 
     @Override
     public void run() {
 
             if (Config.Value.FOLLOW_NOTIFICATION) {
 
-                TwitchAPI.getLatestFollower();
-                TwitchAPI.getRecentFollowers();
+                //TwitchAPI.getLatestFollower();
+                //TwitchAPI.getRecentFollowers();
+
+                List<String> currentFollowers = TwitchAPI.getCurrentFollowers();
+                LogHelper.info("Current Followers: " + currentFollowers.size());
 
             }
 
