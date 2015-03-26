@@ -20,6 +20,9 @@ import java.util.List;
 
 public class TwitchAPI {
 
+    public static List<String> notificationQueue = new ArrayList<String>();
+    public static List<String> existingFollowers = new ArrayList<String>();
+
     public static String getLatestFollower() {
 
         String result = null;
@@ -52,14 +55,14 @@ public class TwitchAPI {
 
     }
 
-    public static List<String> getRecentFollowers() {
+    public static void checkExistingFollowers() {
 
         String result = null;
         List<String> latest = new ArrayList<String>();
 
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
         urlParameters.add(new BasicNameValuePair("direction", "DESC"));
-        urlParameters.add(new BasicNameValuePair("limit", "100"));
+        urlParameters.add(new BasicNameValuePair("limit", "50"));
         urlParameters.add(new BasicNameValuePair("offset", "0"));
 
         try {
@@ -68,34 +71,28 @@ public class TwitchAPI {
             e.printStackTrace();
         }
 
-        if (!(result==null)) {
+        if (result==null) {
+            return;
+        }
 
-            JSONObject jsonObject = new JSONObject(result);
+        JSONObject jsonObject = new JSONObject(result);
 
-            for (int i = 0; i<100; i++) {
-                String current = jsonObject.getJSONArray("follows").getJSONObject(i).getJSONObject("user").getString("name");
-                latest.add(current);
-            }
+        for (int i = 0; i<50; i++) {
+            String current = jsonObject.getJSONArray("follows").getJSONObject(i).getJSONObject("user").getString("name");
+            latest.add(current);
+        }
 
-            for (String current : latest) {
-                LogHelper.info("Recent Follower: " + current);
-            }
-
-            return latest;
-
-        } else {
-
-            latest.add(result);
-            return latest;
+        for (String current : latest) {
 
         }
 
+        existingFollowers.addAll(latest);
+
     }
 
-    public static List<String> getCurrentFollowers(){
+    public static void checkRecentFollowers(){
 
         String result = null;
-        List<String> latest = new ArrayList<String>();
 
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
         urlParameters.add(new BasicNameValuePair("direction", "DESC"));
@@ -108,44 +105,58 @@ public class TwitchAPI {
             e.printStackTrace();
         }
 
-        if (!(result==null)) {
+        if (result==null) {
+            return;
+        }
 
-            JSONObject jsonObject = new JSONObject(result);
+        JSONObject jsonObject = new JSONObject(result);
 
-            for (int i = 0; i<10; i++) {
-                String current = jsonObject.getJSONArray("follows").getJSONObject(i).getJSONObject("user").getString("name");
-                latest.add(current);
+        for (int i = 0; i < 10; i++) {
+
+            String current = jsonObject.getJSONArray("follows").getJSONObject(i).getJSONObject("user").getString("name");
+
+            if (existingFollowers.contains(current)) {
+
+                return;
+
             }
 
-            String nextLink = jsonObject.getJSONObject("_links").getString("next");
+            existingFollowers.add(current);
+            notificationQueue.add(current);
 
-            for (int i=0;i<5;i++) {
-                try {
-                    result = Http.sendGet(nextLink);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        }
 
-                if (!(result == null)) {
+        String nextLink = jsonObject.getJSONObject("_links").getString("next");
 
-                    jsonObject = new JSONObject(result);
+        for (int i = 0; i < 9; i++) {
 
-                    for (int ii = 0; i < 10; ii++) {
-                        String current = jsonObject.getJSONArray("follows").getJSONObject(ii).getJSONObject("user").getString("name");
-                        latest.add(current);
+            try {
+                result = Http.sendGet(nextLink);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            if (!(result == null)) {
+
+                jsonObject = new JSONObject(result);
+
+                for (int ii = 0; ii < 10; ii++) {
+
+                    String current = jsonObject.getJSONArray("follows").getJSONObject(ii).getJSONObject("user").getString("name");
+
+                    if (existingFollowers.contains(current)) {
+
+                        return;
+
                     }
 
-                    nextLink = jsonObject.getJSONObject("_links").getString("next");
+                    existingFollowers.add(current);
+                    notificationQueue.add(current);
+
                 }
+
+                nextLink = jsonObject.getJSONObject("_links").getString("next");
             }
-
-            return latest;
-
-        } else {
-
-            latest.add(result);
-            return latest;
-
         }
 
     }

@@ -2,7 +2,7 @@
  * MC Stream Notifier  Copyright (C) 2015  PeteyDog7
  * This program comes with ABSOLUTELY NO WARRANTY. This is free software,
  * and you are welcome to redistribute it under certain conditions.
- * View the included license or visit 'http://www.gnu.org/licenses/gpl-3.0.txt'
+ * View the included license or visit http://www.gnu.org/licenses/gpl-3.0.txt
  * for more information.
  */
 
@@ -11,6 +11,7 @@ package com.peteydog7.mcstreamnotifier;
 import com.peteydog7.mcstreamnotifier.config.ConfigurationHandler;
 import com.peteydog7.mcstreamnotifier.proxy.IProxy;
 import com.peteydog7.mcstreamnotifier.reference.Reference;
+import com.peteydog7.mcstreamnotifier.twtich.TwitchAPI;
 import com.peteydog7.mcstreamnotifier.twtich.TwitchApiTask;
 import com.peteydog7.mcstreamnotifier.util.LogHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -59,9 +60,10 @@ public class MCStreamNotifier {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
 
-        initialized = true;
+        TwitchAPI.checkExistingFollowers();
+        LogHelper.info("Existing Followers: "+TwitchAPI.existingFollowers);
 
-        scheduler.scheduleAtFixedRate(new TwitchApiTask(), 0, 5, TimeUnit.MINUTES);
+        scheduler.scheduleAtFixedRate(new TwitchApiTask(), 0, 30, TimeUnit.SECONDS);
 
         LogHelper.info("Post Initialization Event Complete!");
 
