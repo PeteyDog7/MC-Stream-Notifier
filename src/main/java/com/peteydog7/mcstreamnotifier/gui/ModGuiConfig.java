@@ -99,7 +99,7 @@ public class ModGuiConfig extends GuiConfig{
 
         @Override
         protected GuiScreen buildChildScreen(){
-            LogHelper.info("buildChildScreen twtich");
+            LogHelper.info("buildChildScreen twitch");
             LogHelper.info(new ConfigElement(ConfigurationHandler.configuration.getCategory(Config.CATEGORY_TWITCH)).getChildElements());
             // This GuiConfig object specifies the configID of the object and as such will force-save when it is closed. The parent
             // GuiConfig object's propertyList will also be refreshed to reflect the changes.

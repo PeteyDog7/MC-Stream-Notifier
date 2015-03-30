@@ -64,13 +64,13 @@ public class ConfigurationHandler {
         followNotification = prop.getBoolean(true);
         propOrderNotifications.add(prop.getName());
 
-        prop = configuration.get(Config.CATEGORY_NOTIFICATIONS, Config.KEY_PRIMARY_COLOR, "c", Config.COMMENT_PRIMARY_COLOR, Property.Type.COLOR);
+        prop = configuration.get(Config.CATEGORY_NOTIFICATIONS, Config.KEY_PRIMARY_COLOR, "f", Config.COMMENT_PRIMARY_COLOR, Property.Type.COLOR);
         prop.setLanguageKey(Config.LANGKEY_PRIMARY_COLOR);
         prop.setValidValues(new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"});
         primaryColor = prop.getString();
         propOrderNotifications.add(prop.getName());
 
-        prop = configuration.get(Config.CATEGORY_NOTIFICATIONS, Config.KEY_SECONDARY_COLOR, "c", Config.COMMENT_SECONDARY_COLOR, Property.Type.COLOR);
+        prop = configuration.get(Config.CATEGORY_NOTIFICATIONS, Config.KEY_SECONDARY_COLOR, "f", Config.COMMENT_SECONDARY_COLOR, Property.Type.COLOR);
         prop.setLanguageKey(Config.LANGKEY_SECONDARY_COLOR);
         prop.setValidValues(new String[] {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"});
         secondaryColor = prop.getString();

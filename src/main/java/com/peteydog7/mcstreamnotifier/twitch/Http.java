@@ -6,7 +6,7 @@
  * for more information.
  */
 
-package com.peteydog7.mcstreamnotifier.twtich;
+package com.peteydog7.mcstreamnotifier.twitch;
 
 import com.peteydog7.mcstreamnotifier.reference.Twitch;
 import com.peteydog7.mcstreamnotifier.util.LogHelper;

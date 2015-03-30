@@ -6,7 +6,7 @@
  * for more information.
  */
 
-package com.peteydog7.mcstreamnotifier.twtich;
+package com.peteydog7.mcstreamnotifier.twitch;
 
 import com.peteydog7.mcstreamnotifier.reference.Config;
 import com.peteydog7.mcstreamnotifier.reference.Twitch;
@@ -18,9 +18,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TwitchAPI {
+public class FollowEvent {
 
-    public static List<String> notificationQueue = new ArrayList<String>();
+    public static List<String> followNotificationQueue = new ArrayList<String>();
     public static List<String> existingFollowers = new ArrayList<String>();
 
     public static String getLatestFollower() {
@@ -115,14 +115,18 @@ public class TwitchAPI {
 
             String current = jsonObject.getJSONArray("follows").getJSONObject(i).getJSONObject("user").getString("name");
 
-            if (existingFollowers.contains(current)) {
+            if (!existingFollowers.contains(current)) {
 
-                return;
+                if (Config.Value.FOLLOW_NOTIFICATION){
+
+                    followNotificationQueue.add(current);
+
+                }
+
+                existingFollowers.add(current);
 
             }
-
-            existingFollowers.add(current);
-            notificationQueue.add(current);
+            else return;
 
         }
 
@@ -144,19 +148,24 @@ public class TwitchAPI {
 
                     String current = jsonObject.getJSONArray("follows").getJSONObject(ii).getJSONObject("user").getString("name");
 
-                    if (existingFollowers.contains(current)) {
+                    if (!existingFollowers.contains(current)) {
 
-                        return;
+                        if (Config.Value.FOLLOW_NOTIFICATION){
+
+                            followNotificationQueue.add(current);
+
+                        }
+
+                        existingFollowers.add(current);
 
                     }
-
-                    existingFollowers.add(current);
-                    notificationQueue.add(current);
+                    else return;
 
                 }
 
                 nextLink = jsonObject.getJSONObject("_links").getString("next");
             }
+
         }
 
     }

@@ -11,26 +11,16 @@ package com.peteydog7.mcstreamnotifier;
 import com.peteydog7.mcstreamnotifier.config.ConfigurationHandler;
 import com.peteydog7.mcstreamnotifier.proxy.IProxy;
 import com.peteydog7.mcstreamnotifier.reference.Reference;
-import com.peteydog7.mcstreamnotifier.twtich.TwitchAPI;
-import com.peteydog7.mcstreamnotifier.twtich.TwitchApiTask;
 import com.peteydog7.mcstreamnotifier.util.LogHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLModDisabledEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-import java.util.Timer;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION, guiFactory = Reference.GUI_FACTORY_CLASS)
 public class MCStreamNotifier {
-
-    public static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(5);
 
     @Mod.Instance(Reference.MOD_ID)
     public static MCStreamNotifier instance;
@@ -55,25 +45,14 @@ public class MCStreamNotifier {
 
     }
 
-    public static boolean initialized;
-
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
 
-        TwitchAPI.checkExistingFollowers();
-        LogHelper.info("Existing Followers: "+TwitchAPI.existingFollowers);
-
-        scheduler.scheduleAtFixedRate(new TwitchApiTask(), 0, 30, TimeUnit.SECONDS);
+        ThreadManager.init();
 
         LogHelper.info("Post Initialization Event Complete!");
 
     }
 
-    @Mod.EventHandler
-    public void disable(FMLModDisabledEvent event) {
-
-        initialized = false;
-
-    }
-
 }
+
