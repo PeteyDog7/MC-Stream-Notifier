@@ -53,6 +53,10 @@ public class Config {
     public static final String LANGKEY_TWITCH_CHANNEL = "mcstreamnotifier.configgui.twitch_channel";
     public static final String COMMENT_TWITCH_CHANNEL = "Enter the name of the Twitch channel that you would like to receive notifications from. Provide it as it is in the URL to your channel. twitch.tv/<channel>";
 
+    public static final String KEY_AUTH_TOKEN = "auth_token";
+    public static final String LANGKEY_AUTH_TOKEN = "mcstreamnotifier.configgui.auth_token";
+    public static final String COMMENT_AUTH_TOKEN = "Automatically configured by typing '/auth' in-game. Visit https://github.com/PeteyDog7/MCStreamNotifier for details on manually configuring this.";
+
     //authentication
 
     public static class Value {
@@ -60,7 +64,9 @@ public class Config {
         public static String PRIMARY_COLOR;
         public static String SECONDARY_COLOR;
         public static boolean FOLLOW_NOTIFICATION;
+        public static boolean SUBSCRIBE_NOTIFICATION;
         public static String TWITCH_CHANNEL;
+        public static String AUTH_TOKEN;
 
     }
 

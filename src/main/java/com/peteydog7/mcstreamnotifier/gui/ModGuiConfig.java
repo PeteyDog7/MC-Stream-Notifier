@@ -11,15 +11,25 @@ package com.peteydog7.mcstreamnotifier.gui;
 import com.peteydog7.mcstreamnotifier.config.ConfigurationHandler;
 import com.peteydog7.mcstreamnotifier.reference.Config;
 import com.peteydog7.mcstreamnotifier.reference.Reference;
+import com.peteydog7.mcstreamnotifier.util.LogHelper;
 import cpw.mods.fml.client.config.*;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
 
+import java.awt.*;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ModGuiConfig extends GuiConfig{
+
+    public GuiButton button;
+    public GuiScreen screen;
+    public Minecraft mc = Minecraft.getMinecraft();
 
     public ModGuiConfig(GuiScreen guiScreen){
 
@@ -27,11 +37,14 @@ public class ModGuiConfig extends GuiConfig{
                 guiScreen,
                 getConfigElements(),
                 Reference.MOD_ID,
+                "parent",
                 false,
                 false,
                 GuiConfig.getAbridgedConfigPath(ConfigurationHandler.configuration.toString()),
                 Config.GUI_TITLE
             );
+
+        this.screen = guiScreen;
 
     }
 
@@ -46,13 +59,41 @@ public class ModGuiConfig extends GuiConfig{
 
         list.add(categoryElement(Config.CATEGORY_NOTIFICATIONS, "Notifications", Config.CATEGORY_NOTIFICATIONS_LANGKEY));
         list.add(categoryElement(Config.CATEGORY_TWITCH, "Twitch", Config.CATEGORY_TWITCH_LANGKEY));
+        list.add(new DummyConfigElement.DummyCategoryElement("test", "test", GuiConfigEntries.ButtonEntry.class));
 
         return list;
     }
 
     private static IConfigElement categoryElement(String category, String name, String tooltip_key) {
-        return new DummyConfigElement.DummyCategoryElement(name, tooltip_key,
-                new ConfigElement(ConfigurationHandler.configuration.getCategory(category)).getChildElements());
+        List<IConfigElement> elements = new ConfigElement(ConfigurationHandler.configuration.getCategory(category)).getChildElements();
+        return new DummyConfigElement.DummyCategoryElement(name, tooltip_key, elements);
+    }
+
+    @Override
+    public void initGui() {
+        // You can add buttons and initialize fields here
+        /*int width = Math.max(mc.fontRenderer.getStringWidth(I18n.format("gui.authorize")) + 20, 100);
+        this.button = new GuiButtonExt(1717, this.width / 2 - (width/2) , this.height - 100, width, 20, I18n.format("gui.authorize"));
+        if (false){
+            LogHelper.info("Authorize button added.");
+            this.buttonList.add(this.button);
+        }*/
+
+        super.initGui();
+    }
+
+    @Override
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        super.drawScreen(mouseX, mouseY, partialTicks);
+    }
+
+    @Override
+    protected void actionPerformed(GuiButton button) {
+        // You can process any additional buttons you may have added here
+        /*if (button.id==1717){
+            LogHelper.info("Authorize button pressed!");
+        }*/
+        super.actionPerformed(button);
     }
 
     /*

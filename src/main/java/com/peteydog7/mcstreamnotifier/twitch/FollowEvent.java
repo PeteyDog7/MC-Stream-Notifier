@@ -49,7 +49,7 @@ public class FollowEvent {
 
         } else {
 
-            return result;
+            return null;
 
         }
 
@@ -95,6 +95,7 @@ public class FollowEvent {
         String result = null;
 
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+
         urlParameters.add(new BasicNameValuePair("direction", "DESC"));
         urlParameters.add(new BasicNameValuePair("limit", "10"));
         urlParameters.add(new BasicNameValuePair("offset", "0"));
@@ -135,7 +136,7 @@ public class FollowEvent {
         for (int i = 0; i < 9; i++) {
 
             try {
-                result = Http.sendGet(nextLink);
+                result = Http.sendGet(nextLink, true);
             } catch (Exception e) {
                 e.printStackTrace();
             }

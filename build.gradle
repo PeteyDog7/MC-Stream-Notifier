@@ -12,6 +12,8 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        compile 'org.springframework.social:spring-social:1.1.0.RELEASE'
+        compile 'org.json:json:20141113'
     }
 }
 
@@ -32,6 +34,10 @@ minecraft {
     runDir = "eclipse"
 }
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
@@ -47,6 +53,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
     compile 'org.json:json:20141113'
+    compile 'com.nanohttpd:nanohttpd:2.1.1'
 
 }
 

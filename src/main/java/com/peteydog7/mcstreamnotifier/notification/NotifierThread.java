@@ -9,6 +9,7 @@
 package com.peteydog7.mcstreamnotifier.notification;
 
 import com.peteydog7.mcstreamnotifier.ThreadManager;
+import com.peteydog7.mcstreamnotifier.reference.Config;
 import com.peteydog7.mcstreamnotifier.twitch.FollowEvent;
 import com.peteydog7.mcstreamnotifier.twitch.SubscribeEvent;
 import com.peteydog7.mcstreamnotifier.util.LogHelper;
@@ -20,15 +21,17 @@ public class NotifierThread implements Runnable {
 
         LogHelper.info("Iteration: "+ThreadManager.iteration);
 
-        if (ThreadManager.iteration>36) ThreadManager.iteration=0;
+        if (ThreadManager.iteration>=36) ThreadManager.iteration=1;
 
         if (ThreadManager.iteration==36) {
             credit();
             LogHelper.info("credit");
         }
         else if (ThreadManager.iteration==24){
-            subscribeInfo();
-            LogHelper.info("subInfo");
+            if (Config.Value.SUBSCRIBE_NOTIFICATION) {
+                subscribeInfo();
+                LogHelper.info("subInfo");
+            } else follow();
         }
         else if (ThreadManager.iteration==12) {
             followInfo();

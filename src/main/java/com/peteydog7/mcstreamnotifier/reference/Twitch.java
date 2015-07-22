@@ -14,4 +14,9 @@ public class Twitch {
 
     public static String API_BASE = "api.twitch.tv/kraken/";
 
+    public static String API_VERSION = "application/vnd.twitchtv.v3+json";
+    public static String CLIENT_ID = "8pc75if65zzg5fqu7wvxktb80sn493h";
+    public static String REDIRECT_URI = "http://127.0.0.1:8080";
+    public static String SCOPES = "channel_subscriptions";
+
 }

@@ -8,6 +8,8 @@
 
 package com.peteydog7.mcstreamnotifier.config;
 
+import com.peteydog7.mcstreamnotifier.ThreadManager;
+import com.peteydog7.mcstreamnotifier.event.EventHandler;
 import com.peteydog7.mcstreamnotifier.reference.Config;
 import com.peteydog7.mcstreamnotifier.reference.Reference;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
@@ -35,24 +37,37 @@ public class ConfigurationHandler {
 
     }
 
+    public static void update(){
+        loadConfig();
+        updateConfigReference();
+    }
+
     protected static String primaryColor;
     protected static String secondaryColor;
     protected static boolean followNotification;
     protected static boolean subscribeNotification;
     protected static String twitchChannel;
+    protected static String authToken;
 
     private static void loadConfig(){
 
         List<String> propOrderNotifications = new ArrayList<String>();
+        List<String> propOrderTwitch = new ArrayList<String>();
         Property prop;
 
         prop = configuration.get(Config.CATEGORY_TWITCH, Config.KEY_TWITCH_CHANNEL, "channel");
         prop.comment = Config.COMMENT_TWITCH_CHANNEL;
         prop.setLanguageKey(Config.LANGKEY_TWITCH_CHANNEL);
         twitchChannel = prop.getString();
-        //propOrderTwitch.add(prop.getName());
+        propOrderTwitch.add(prop.getName());
 
-        prop = configuration.get(Config.CATEGORY_NOTIFICATIONS, Config.KEY_SUBSCRIBE_NOTIFICATION, true);
+        prop = configuration.get(Config.CATEGORY_TWITCH, Config.KEY_AUTH_TOKEN, "none");
+        prop.comment = Config.COMMENT_AUTH_TOKEN;
+        prop.setLanguageKey(Config.LANGKEY_AUTH_TOKEN);
+        authToken = prop.getString();
+        propOrderTwitch.add(prop.getName());
+
+        prop = configuration.get(Config.CATEGORY_NOTIFICATIONS, Config.KEY_SUBSCRIBE_NOTIFICATION, false);
         prop.comment = Config.COMMENT_SUBSCRIBE_NOTIFICATION;
         prop.setLanguageKey(Config.LANGKEY_SUBSCRIBE_NOTIFICATION);
         subscribeNotification = prop.getBoolean(true);
@@ -92,6 +107,10 @@ public class ConfigurationHandler {
         if(event.modID.equalsIgnoreCase(Reference.MOD_ID)){
             loadConfig();
         }
+        if (Config.Value.TWITCH_CHANNEL!="channel"&&ThreadManager.canceled&&EventHandler.inGame){
+            ThreadManager.canceled=false;
+            ThreadManager.init();
+        }
     }
 
     private static void updateConfigReference(){
@@ -99,8 +118,10 @@ public class ConfigurationHandler {
         Config.Value.PRIMARY_COLOR = primaryColor;
         Config.Value.SECONDARY_COLOR = secondaryColor;
         Config.Value.FOLLOW_NOTIFICATION = followNotification;
+        Config.Value.SUBSCRIBE_NOTIFICATION = subscribeNotification;
         Config.Value.SECONDARY_COLOR = secondaryColor;
         Config.Value.TWITCH_CHANNEL = twitchChannel;
+        Config.Value.AUTH_TOKEN = authToken;
 
     }
 

@@ -135,7 +135,7 @@ public class SubscribeEvent {
         for (int i = 0; i < 9; i++) {
 
             try {
-                result = Http.sendGet(nextLink);
+                result = Http.sendGet(nextLink, true);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -169,5 +169,7 @@ public class SubscribeEvent {
         }
 
     }
+
+
 
 }
