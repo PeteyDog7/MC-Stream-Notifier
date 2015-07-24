@@ -13,7 +13,6 @@ import com.peteydog7.mcstreamnotifier.server.CallbackServer;
 import com.peteydog7.mcstreamnotifier.util.ChatComponents;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
-
 import net.minecraft.util.EnumChatFormatting;
 
 import java.awt.*;
@@ -24,7 +23,8 @@ import java.util.List;
 public class AuthCommand implements ICommand {
 
     private List aliases;
-    public AuthCommand(){
+
+    public AuthCommand() {
         this.aliases = new ArrayList();
         this.aliases.add("authorize");
         this.aliases.add("auth");

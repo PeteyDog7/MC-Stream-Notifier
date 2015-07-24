@@ -19,30 +19,26 @@ public class NotifierThread implements Runnable {
     @Override
     public void run() {
 
-        LogHelper.info("Iteration: "+ThreadManager.iteration);
+        LogHelper.info("Iteration: " + ThreadManager.iteration);
 
-        if (ThreadManager.iteration>=36) ThreadManager.iteration=1;
+        if (ThreadManager.iteration >= 36) ThreadManager.iteration = 1;
 
-        if (ThreadManager.iteration==36) {
+        if (ThreadManager.iteration == 36) {
             credit();
             LogHelper.info("credit");
-        }
-        else if (ThreadManager.iteration==24){
+        } else if (ThreadManager.iteration == 24) {
             if (Config.Value.SUBSCRIBE_NOTIFICATION) {
                 subscribeInfo();
                 LogHelper.info("subInfo");
             } else follow();
-        }
-        else if (ThreadManager.iteration==12) {
+        } else if (ThreadManager.iteration == 12) {
             followInfo();
             LogHelper.info("followInfo");
-        }
-        else {
-            if (!subscribe()){
+        } else {
+            if (!subscribe()) {
                 follow();
                 LogHelper.info("follow");
-            }
-            else {
+            } else {
                 LogHelper.info("sub");
             }
         }
@@ -51,9 +47,9 @@ public class NotifierThread implements Runnable {
 
     }
 
-    public void follow(){
+    public void follow() {
 
-        if(FollowEvent.followNotificationQueue.isEmpty()) {
+        if (FollowEvent.followNotificationQueue.isEmpty()) {
 
             LogHelper.info("Follow Notification Queue Empty");
             return;
@@ -71,7 +67,7 @@ public class NotifierThread implements Runnable {
 
     public boolean subscribe() {
 
-        if (SubscribeEvent.subscribeNotificationQueue.isEmpty()){
+        if (SubscribeEvent.subscribeNotificationQueue.isEmpty()) {
             LogHelper.info("Subscription Notification Queue Empty");
             return false;
         }
@@ -87,19 +83,19 @@ public class NotifierThread implements Runnable {
 
     }
 
-    public void followInfo(){
+    public void followInfo() {
 
         ChatNotification.followInfo();
 
     }
 
-    public void subscribeInfo(){
+    public void subscribeInfo() {
 
         ChatNotification.subscribeInfo();
 
     }
 
-    public void credit(){
+    public void credit() {
         ChatNotification.modInfo();
     }
 

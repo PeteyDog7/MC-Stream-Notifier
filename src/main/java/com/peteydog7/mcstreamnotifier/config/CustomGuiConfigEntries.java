@@ -11,5 +11,4 @@ package com.peteydog7.mcstreamnotifier.config;
 public class CustomGuiConfigEntries {
 
 
-
 }

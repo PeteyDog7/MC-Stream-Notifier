@@ -12,18 +12,14 @@ import com.peteydog7.mcstreamnotifier.command.AuthCommand;
 import com.peteydog7.mcstreamnotifier.config.ConfigurationHandler;
 import com.peteydog7.mcstreamnotifier.event.EventHandler;
 import com.peteydog7.mcstreamnotifier.proxy.IProxy;
-import com.peteydog7.mcstreamnotifier.reference.Config;
 import com.peteydog7.mcstreamnotifier.reference.Reference;
-import com.peteydog7.mcstreamnotifier.util.ChatComponents;
 import com.peteydog7.mcstreamnotifier.util.LogHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.*;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.util.EnumChatFormatting;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.client.ClientCommandHandler;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION, guiFactory = Reference.GUI_FACTORY_CLASS)

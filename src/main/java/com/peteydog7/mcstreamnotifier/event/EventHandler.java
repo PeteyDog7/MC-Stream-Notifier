@@ -22,13 +22,13 @@ public class EventHandler {
     public static boolean inGame = false;
 
     @SubscribeEvent
-    public void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event){
+    public void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
 
-        inGame=true;
+        inGame = true;
 
         event.player.addChatMessage(new ChatComponentTranslation(ChatNotification.CHAT_PREFIX + EnumChatFormatting.DARK_PURPLE + "MCStreamNotifier Enabled!"));
 
-        if (Config.Value.TWITCH_CHANNEL=="channel"&&Config.Value.FOLLOW_NOTIFICATION){
+        if (Config.Value.TWITCH_CHANNEL == "channel" && Config.Value.FOLLOW_NOTIFICATION) {
 
             event.player.addChatMessage(ChatComponents.format(EnumChatFormatting.YELLOW, "You have follow notifications enabled but do not have your twitch channel configured. Please configure your twitch channel or disabled follow notifications."));
 
@@ -36,7 +36,7 @@ public class EventHandler {
 
         ThreadManager.init();
 
-        if (Config.Value.AUTH_TOKEN=="none"&&Config.Value.SUBSCRIBE_NOTIFICATION) {
+        if (Config.Value.AUTH_TOKEN == "none" && Config.Value.SUBSCRIBE_NOTIFICATION) {
             event.player.addChatMessage(ChatComponents.format(EnumChatFormatting.YELLOW, "You have subscription notifications on but have not authenticated your twitch account with this mod. Please type '/auth' to authorize MCStreamNotifier to use your account or disable subscription notifications in the config."));
         }
 
@@ -44,7 +44,7 @@ public class EventHandler {
 
     @SubscribeEvent
     public void onPlayerLeave(PlayerEvent.PlayerLoggedOutEvent event) {
-        inGame=false;
+        inGame = false;
     }
 
 }

@@ -38,7 +38,7 @@ public class SubscribeEvent {
             e.printStackTrace();
         }
 
-        if (!(result==null)) {
+        if (!(result == null)) {
 
             JSONObject jsonObject = new JSONObject(result);
             String latest = jsonObject.getJSONArray("follows").getJSONObject(0).getJSONObject("user").getString("name");
@@ -71,13 +71,13 @@ public class SubscribeEvent {
             e.printStackTrace();
         }
 
-        if (result==null) {
+        if (result == null) {
             return;
         }
 
         JSONObject jsonObject = new JSONObject(result);
 
-        for (int i = 0; i<50; i++) {
+        for (int i = 0; i < 50; i++) {
             String current = jsonObject.getJSONArray("follows").getJSONObject(i).getJSONObject("user").getString("name");
             latest.add(current);
         }
@@ -90,7 +90,7 @@ public class SubscribeEvent {
 
     }
 
-    public static void checkRecentSubscriptions(){
+    public static void checkRecentSubscriptions() {
 
         String result = null;
 
@@ -105,7 +105,7 @@ public class SubscribeEvent {
             e.printStackTrace();
         }
 
-        if (result==null) {
+        if (result == null) {
             return;
         }
 
@@ -117,7 +117,7 @@ public class SubscribeEvent {
 
             if (!existingSubscribers.contains(current)) {
 
-                if (Config.Value.FOLLOW_NOTIFICATION){
+                if (Config.Value.FOLLOW_NOTIFICATION) {
 
                     subscribeNotificationQueue.add(current);
 
@@ -125,8 +125,7 @@ public class SubscribeEvent {
 
                 existingSubscribers.add(current);
 
-            }
-            else return;
+            } else return;
 
         }
 
@@ -150,7 +149,7 @@ public class SubscribeEvent {
 
                     if (!existingSubscribers.contains(current)) {
 
-                        if (Config.Value.FOLLOW_NOTIFICATION){
+                        if (Config.Value.FOLLOW_NOTIFICATION) {
 
                             subscribeNotificationQueue.add(current);
 
@@ -158,8 +157,7 @@ public class SubscribeEvent {
 
                         existingSubscribers.add(current);
 
-                    }
-                    else return;
+                    } else return;
 
                 }
 
@@ -169,7 +167,6 @@ public class SubscribeEvent {
         }
 
     }
-
 
 
 }

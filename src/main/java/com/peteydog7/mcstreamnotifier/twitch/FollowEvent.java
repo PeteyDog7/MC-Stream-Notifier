@@ -38,7 +38,7 @@ public class FollowEvent {
             e.printStackTrace();
         }
 
-        if (!(result==null)) {
+        if (!(result == null)) {
 
             JSONObject jsonObject = new JSONObject(result);
             String latest = jsonObject.getJSONArray("follows").getJSONObject(0).getJSONObject("user").getString("name");
@@ -71,26 +71,22 @@ public class FollowEvent {
             e.printStackTrace();
         }
 
-        if (result==null) {
+        if (result == null) {
             return;
         }
 
         JSONObject jsonObject = new JSONObject(result);
 
-        for (int i = 0; i<50; i++) {
+        for (int i = 0; i < 50; i++) {
             String current = jsonObject.getJSONArray("follows").getJSONObject(i).getJSONObject("user").getString("name");
             latest.add(current);
-        }
-
-        for (String current : latest) {
-
         }
 
         existingFollowers.addAll(latest);
 
     }
 
-    public static void checkRecentFollowers(){
+    public static void checkRecentFollowers() {
 
         String result = null;
 
@@ -106,7 +102,7 @@ public class FollowEvent {
             e.printStackTrace();
         }
 
-        if (result==null) {
+        if (result == null) {
             return;
         }
 
@@ -118,7 +114,7 @@ public class FollowEvent {
 
             if (!existingFollowers.contains(current)) {
 
-                if (Config.Value.FOLLOW_NOTIFICATION){
+                if (Config.Value.FOLLOW_NOTIFICATION) {
 
                     followNotificationQueue.add(current);
 
@@ -126,8 +122,7 @@ public class FollowEvent {
 
                 existingFollowers.add(current);
 
-            }
-            else return;
+            } else return;
 
         }
 
@@ -151,7 +146,7 @@ public class FollowEvent {
 
                     if (!existingFollowers.contains(current)) {
 
-                        if (Config.Value.FOLLOW_NOTIFICATION){
+                        if (Config.Value.FOLLOW_NOTIFICATION) {
 
                             followNotificationQueue.add(current);
 
@@ -159,8 +154,7 @@ public class FollowEvent {
 
                         existingFollowers.add(current);
 
-                    }
-                    else return;
+                    } else return;
 
                 }
 

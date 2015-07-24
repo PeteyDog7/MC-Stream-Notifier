@@ -21,15 +21,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.minecraftforge.common.config.Configuration.CATEGORY_GENERAL;
-
 public class ConfigurationHandler {
 
     public static Configuration configuration;
 
-    public static void init(File configFile){
+    public static void init(File configFile) {
 
-        if(configuration == null) {
+        if (configuration == null) {
             configuration = new Configuration(configFile);
             loadConfig();
             updateConfigReference();
@@ -37,7 +35,7 @@ public class ConfigurationHandler {
 
     }
 
-    public static void update(){
+    public static void update() {
         loadConfig();
         updateConfigReference();
     }
@@ -49,7 +47,7 @@ public class ConfigurationHandler {
     protected static String twitchChannel;
     protected static String authToken;
 
-    private static void loadConfig(){
+    private static void loadConfig() {
 
         List<String> propOrderNotifications = new ArrayList<String>();
         List<String> propOrderTwitch = new ArrayList<String>();
@@ -87,13 +85,13 @@ public class ConfigurationHandler {
 
         prop = configuration.get(Config.CATEGORY_NOTIFICATIONS, Config.KEY_SECONDARY_COLOR, "f", Config.COMMENT_SECONDARY_COLOR, Property.Type.COLOR);
         prop.setLanguageKey(Config.LANGKEY_SECONDARY_COLOR);
-        prop.setValidValues(new String[] {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"});
+        prop.setValidValues(new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"});
         secondaryColor = prop.getString();
         propOrderNotifications.add(prop.getName());
 
         configuration.setCategoryPropertyOrder(Config.CATEGORY_NOTIFICATIONS, propOrderNotifications);
 
-        if(configuration.hasChanged()){
+        if (configuration.hasChanged()) {
 
             configuration.save();
             updateConfigReference();
@@ -103,17 +101,17 @@ public class ConfigurationHandler {
     }
 
     @SubscribeEvent
-    public void onConfigChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event){
-        if(event.modID.equalsIgnoreCase(Reference.MOD_ID)){
+    public void onConfigChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event) {
+        if (event.modID.equalsIgnoreCase(Reference.MOD_ID)) {
             loadConfig();
         }
-        if (Config.Value.TWITCH_CHANNEL!="channel"&&ThreadManager.canceled&&EventHandler.inGame){
-            ThreadManager.canceled=false;
+        if (Config.Value.TWITCH_CHANNEL != "channel" && ThreadManager.canceled && EventHandler.inGame) {
+            ThreadManager.canceled = false;
             ThreadManager.init();
         }
     }
 
-    private static void updateConfigReference(){
+    private static void updateConfigReference() {
 
         Config.Value.PRIMARY_COLOR = primaryColor;
         Config.Value.SECONDARY_COLOR = secondaryColor;

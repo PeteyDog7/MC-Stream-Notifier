@@ -12,7 +12,7 @@ import cpw.mods.fml.client.config.GuiConfigEntries;
 
 public abstract class CommonProxy implements IProxy {
 
-    public Class<? extends GuiConfigEntries.IConfigEntry> getChatColorClass(){
+    public Class<? extends GuiConfigEntries.IConfigEntry> getChatColorClass() {
 
         return GuiConfigEntries.ChatColorEntry.class;
 

@@ -40,20 +40,15 @@ package com.peteydog7.mcstreamnotifier.server;
         * #L%
         */
 
-        import com.peteydog7.mcstreamnotifier.config.ConfigurationHandler;
-        import com.peteydog7.mcstreamnotifier.reference.Config;
-        import com.peteydog7.mcstreamnotifier.util.ChatComponents;
-        import com.peteydog7.mcstreamnotifier.util.LogHelper;
-        import fi.iki.elonen.NanoHTTPD;
-        import net.minecraft.command.ICommandSender;
-        import net.minecraft.util.EnumChatFormatting;
-        import org.apache.commons.io.IOUtils;
-        import sun.rmi.runtime.Log;
+import com.peteydog7.mcstreamnotifier.config.ConfigurationHandler;
+import com.peteydog7.mcstreamnotifier.reference.Config;
+import com.peteydog7.mcstreamnotifier.util.ChatComponents;
+import com.peteydog7.mcstreamnotifier.util.LogHelper;
+import fi.iki.elonen.NanoHTTPD;
+import net.minecraft.command.ICommandSender;
+import net.minecraft.util.EnumChatFormatting;
 
-        import java.io.IOException;
-        import java.io.StringWriter;
-        import java.nio.charset.Charset;
-        import java.util.Map;
+import java.util.Map;
 
 /**
  * An example of subclassing NanoHTTPD to make a custom HTTP server.
@@ -77,9 +72,9 @@ public class CallbackServer extends NanoHTTPD {
         LogHelper.info("Server request received.");
         Map<String, String> parms = session.getParms();
         String msg = "<html><body>";
-        if (parms.containsKey("fragment")){
+        if (parms.containsKey("fragment")) {
             LogHelper.info("AJAX");
-            if (parms.get("fragment")!=null) {
+            if (parms.get("fragment") != null) {
                 String fragment = parms.get("fragment");
                 LogHelper.info("fragment received: " + fragment);
                 String authToken = fragment.split("=")[1];
@@ -88,8 +83,7 @@ public class CallbackServer extends NanoHTTPD {
                 ConfigurationHandler.update();
                 authSuccess();
                 return new Response(Response.Status.OK, MIME_PLAINTEXT, "success");
-            }
-            else {
+            } else {
                 authFail();
                 return new Response(Response.Status.OK, MIME_PLAINTEXT, "fail");
             }
@@ -104,12 +98,12 @@ public class CallbackServer extends NanoHTTPD {
         return new Response(Response.Status.OK, MIME_HTML, msg + "</body></html>\n");
     }
 
-    private void authSuccess(){
+    private void authSuccess() {
         this.player.addChatMessage(ChatComponents.format(EnumChatFormatting.GREEN, "Authorization Successful!"));
 
     }
 
-    private void authFail(){
+    private void authFail() {
         this.player.addChatMessage(ChatComponents.format(EnumChatFormatting.RED, "Authorization Failed! Please try again or visit the following link for help: "));
         this.player.addChatMessage(ChatComponents.newChatWithLinks("http://github.com/PeteyDog7/MCStreamNotifier"));
     }

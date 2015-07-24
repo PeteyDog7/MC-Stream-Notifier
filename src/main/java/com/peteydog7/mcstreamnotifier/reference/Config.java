@@ -9,7 +9,6 @@
 package com.peteydog7.mcstreamnotifier.reference;
 
 import cpw.mods.fml.client.config.GuiConfigEntries;
-import net.minecraft.client.resources.I18n;
 
 public class Config {
 

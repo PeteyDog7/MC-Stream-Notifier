@@ -9,6 +9,7 @@
 package com.peteydog7.mcstreamnotifier.twitch;
 
 import com.peteydog7.mcstreamnotifier.util.LogHelper;
+import cpw.mods.fml.common.eventhandler.*;
 
 public class TwitchApiThread implements Runnable {
 
@@ -17,8 +18,11 @@ public class TwitchApiThread implements Runnable {
 
         FollowEvent.checkRecentFollowers();
 
-        LogHelper.info("Existing Followers (Updated): "+ FollowEvent.existingFollowers);
-        LogHelper.info("Notification Queue: "+ FollowEvent.followNotificationQueue);
+        LogHelper.info("Existing Followers (Updated): " + FollowEvent.existingFollowers);
+        LogHelper.info("Notification Queue: " + FollowEvent.followNotificationQueue);
+
+        SubscribeEvent.checkRecentSubscriptions();
+
 
     }
 }

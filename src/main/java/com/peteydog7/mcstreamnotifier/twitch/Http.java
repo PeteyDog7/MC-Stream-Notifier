@@ -12,26 +12,22 @@ import com.peteydog7.mcstreamnotifier.ThreadManager;
 import com.peteydog7.mcstreamnotifier.reference.Config;
 import com.peteydog7.mcstreamnotifier.reference.Twitch;
 import com.peteydog7.mcstreamnotifier.util.LogHelper;
-import org.apache.http.*;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.ExecutionContext;
 import org.apache.http.protocol.HttpContext;
-import org.lwjgl.Sys;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Http {
@@ -41,7 +37,7 @@ public class Http {
     // HTTP GET request
     public static String sendApiGet(String urlPath, List<NameValuePair> urlParameters) throws Exception {
 
-        if (Config.Value.AUTH_TOKEN!="none") {
+        if (Config.Value.AUTH_TOKEN != "none") {
             urlParameters.add(new BasicNameValuePair("oauth_token", Config.Value.AUTH_TOKEN));
         }
 
@@ -60,15 +56,15 @@ public class Http {
         // add request header
         request.addHeader("User-Agent", USER_AGENT);
 
-        request.addHeader("client_id",Twitch.CLIENT_ID);
-        request.addHeader("Accept",Twitch.API_VERSION);
+        request.addHeader("client_id", Twitch.CLIENT_ID);
+        request.addHeader("Accept", Twitch.API_VERSION);
 
         HttpResponse response = client.execute(request);
 
         LogHelper.info("Sending 'GET' request to URL : " + url);
         LogHelper.info("Response Code : " + response.getStatusLine().getStatusCode());
 
-        if (response.getStatusLine().getStatusCode()!=200) {
+        if (response.getStatusLine().getStatusCode() != 200) {
             ThreadManager.restartThreadTwitch();
             return null;
         }
@@ -94,8 +90,8 @@ public class Http {
         request.addHeader("User-Agent", USER_AGENT);
 
         if (apiCall) {
-            request.addHeader("client_id",Twitch.CLIENT_ID);
-            request.addHeader("Accept",Twitch.API_VERSION);
+            request.addHeader("client_id", Twitch.CLIENT_ID);
+            request.addHeader("Accept", Twitch.API_VERSION);
         }
 
         HttpResponse response = client.execute(request);

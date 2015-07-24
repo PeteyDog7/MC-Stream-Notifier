@@ -11,27 +11,26 @@ package com.peteydog7.mcstreamnotifier.gui;
 import com.peteydog7.mcstreamnotifier.config.ConfigurationHandler;
 import com.peteydog7.mcstreamnotifier.reference.Config;
 import com.peteydog7.mcstreamnotifier.reference.Reference;
-import com.peteydog7.mcstreamnotifier.util.LogHelper;
-import cpw.mods.fml.client.config.*;
+import cpw.mods.fml.client.config.DummyConfigElement;
+import cpw.mods.fml.client.config.GuiConfig;
+import cpw.mods.fml.client.config.GuiConfigEntries;
+import cpw.mods.fml.client.config.IConfigElement;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
 
-import java.awt.*;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModGuiConfig extends GuiConfig{
+public class ModGuiConfig extends GuiConfig {
 
     public GuiButton button;
     public GuiScreen screen;
     public Minecraft mc = Minecraft.getMinecraft();
 
-    public ModGuiConfig(GuiScreen guiScreen){
+    public ModGuiConfig(GuiScreen guiScreen) {
 
         super(
                 guiScreen,
@@ -42,13 +41,13 @@ public class ModGuiConfig extends GuiConfig{
                 false,
                 GuiConfig.getAbridgedConfigPath(ConfigurationHandler.configuration.toString()),
                 Config.GUI_TITLE
-            );
+        );
 
         this.screen = guiScreen;
 
     }
 
-    private static List<IConfigElement> getElements(){
+    private static List<IConfigElement> getElements() {
 
         return new ConfigElement(ConfigurationHandler.configuration.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements();
 

@@ -30,36 +30,26 @@ public class ThreadManager {
     public static ScheduledFuture<?> twitchApiThread;
     public static ScheduledFuture<?> notifierThread;
 
-    public static void init(){
+    public static void init() {
 
-        if (Config.Value.TWITCH_CHANNEL=="channel") {
+        if (Config.Value.TWITCH_CHANNEL == "channel") {
             canceled = true;
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentTranslation("Please c"));
+            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentTranslation("Please configure your twitch channel and restart the game."));
             return;
         }
 
         FollowEvent.checkExistingFollowers();
         LogHelper.info("Existing Followers: " + FollowEvent.existingFollowers);
 
-        /*scheduler.scheduleAtFixedRate(new Runnable() {
-            @Override
-            public void run() {
-                LogHelper.info("PeteyDog7");
-                if (FollowEvent.followNotificationQueue.isEmpty()) {
-                    FollowEvent.followNotificationQueue.add("PeteyDog7");
-                }
-            }
-        }, 15, 10, TimeUnit.SECONDS);*/
-
         twitchApiThread = scheduler.scheduleAtFixedRate(new TwitchApiThread(), 0, 60, TimeUnit.SECONDS);
         notifierThread = scheduler.scheduleAtFixedRate(new NotifierThread(), 0, 15, TimeUnit.SECONDS);
     }
 
-    public static boolean restartThreadTwitch(){
+    public static boolean restartThreadTwitch() {
 
         boolean canceled = twitchApiThread.cancel(false);
 
-        if (canceled){
+        if (canceled) {
             twitchApiThread = scheduler.scheduleAtFixedRate(new TwitchApiThread(), 0, 15, TimeUnit.SECONDS);
         }
 
